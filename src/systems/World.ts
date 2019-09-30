@@ -1,4 +1,4 @@
-import THREE from 'three';
+import * as THREE from 'three';
 
 // The game manages the game state and the requestAnimationFrame. Anything to make the ThreeJS loop work is here.
 export default class Game {
@@ -32,9 +32,15 @@ export default class Game {
 
         this.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.001, 100000);
 
-
         // --- Fill the scene ---
+        var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+        this.scenes['default'].add( directionalLight );
 
+        var geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+        var material = new THREE.MeshPhongMaterial( {color: 0xff6400, wireframe: false, shininess: 10} );
+        var torus = new THREE.Mesh(geometry, material);
+        torus.position.set(0, 0, -27);
+        this.scenes['default'].add(torus);
 
         // ----------------------
 
