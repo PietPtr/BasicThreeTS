@@ -10,8 +10,8 @@ class Main {
 
 Main.run();
 
-// Make main available to the window for debugging
 
+// Make main available to the window for debugging
 declare global {
     interface Window { Main: any; }
 }
